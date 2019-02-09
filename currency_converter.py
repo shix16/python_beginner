@@ -1,42 +1,38 @@
 
-# Define function
-def convert_currency(im,er):
+# Define main function 
+def main():
     """
-    :param im: input money
-    :param er: exchange rate
-    :return: output money
+    :return: 
     """
-    out = im * er
-    return out
+    # Rate
+    usd_vs_rmb = 6.77
 
-# Rate
-usd_vs_rmb = 6.77
-
-# Input with unit
-currency_str_value = input("please input currency with unit:")
-
-#while currency_str_value != "q":
+    # Input with unit
+    currency_str_value = input("please input currency with unit:")
 
     # Get currency unit
-unit = currency_str_value[-3:]
+    unit = currency_str_value[-3:]
 
-if unit == "CNY":
-    exchange_rate = 1 / usd_vs_rmb
+    if unit == "CNY":
+        exchange_rate = 1 / usd_vs_rmb
 
-elif unit == "USD":
-    exchange_rate = usd_vs_rmb
+    elif unit == "USD":
+        exchange_rate = usd_vs_rmb
 
-else:
-    # Unexpected result
-    exchange_rate = -1
+    else:
+        # Unexpected result
+        exchange_rate = -1
 
-if exchange_rate != -1:
-    input_money = eval(currency_str_value [:-3])
-    # Call defined function
-    output_money = convert_currency(input_money,exchange_rate)
-    print("covert money", output_money)
+    if exchange_rate != -1:
+        input_money = eval(currency_str_value [:-3])
+        # Define lambda function
+        convert_currency = lambda x: x * exchange_rate
+        # Call lambda function
+        out_money = convert_currency(input_money)
+        print("covert money", out_money)
 
-else:
-    print("unsupported currency")
+    else:
+        print("unsupported currency")
 
-print("converter quit")
+if __name__ == '__main__':
+    main()
